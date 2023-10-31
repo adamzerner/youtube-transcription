@@ -9,7 +9,9 @@ export default function App({ Component }: AppProps) {
         <title>YouTube Transcription</title>
       </head>
       <body>
-        <Component />
+        <div>
+          <Component />
+        </div>
       </body>
     </html>
   );
