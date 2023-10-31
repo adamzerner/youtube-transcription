@@ -1,4 +1,4 @@
-import { Button } from "../components/Button.tsx";
+import { Button } from "../components/button.tsx";
 import { Input } from "../components/input.tsx";
 
 export default () => {
