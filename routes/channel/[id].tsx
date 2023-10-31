@@ -2,10 +2,8 @@
 import { RouteContext } from "$fresh/server.ts";
 import { YoutubeTranscript } from "npm:youtube-transcript";
 
-// To get more than 50 results: https://stackoverflow.com/questions/18953499/youtube-api-to-fetch-all-videos-on-a-channel#comment39452840_20795628
-
 export default async (_req: Request, ctx: RouteContext) => {
-  //https://stackoverflow.com/a/36387404/1927876
+  // https://stackoverflow.com/a/36387404/1927876
   // GoogleDevelopers (real channel ID)
   const youtubeApiKey = Deno.env.get("YOUTUBE_API_KEY");
   const channelId = ctx.params.id;
@@ -23,7 +21,7 @@ export default async (_req: Request, ctx: RouteContext) => {
     uploadsJson.items[0].contentDetails.relatedPlaylists.uploads;
 
   const playlistItemsResponse = await fetch(
-    `https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${playlistId}&key=${youtubeApiKey}&part=snippet&maxResults=100000`,
+    `https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${playlistId}&key=${youtubeApiKey}&part=snippet&maxResults=50`, // limit is 50; see this to get more https://stackoverflow.com/questions/18953499/youtube-api-to-fetch-all-videos-on-a-channel#comment39452840_20795628
   );
 
   if (!playlistItemsResponse.ok) {
